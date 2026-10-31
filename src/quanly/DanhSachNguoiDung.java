@@ -1,147 +1,103 @@
 package quanly;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DanhSachNguoiDung extends DanhSach<NguoiDung> implements IQuanLy<NguoiDung> {
+/**
+ * KẾ THỪA: lớp danh sách người dùng, extends DanhSach<NguoiDung>.
+ * ĐA HÌNH: một ArrayList<NguoiDung> chứa lẫn ThiSinh và GiaoVien;
+ * gọi nd.hienThi(), nd.toFileString(), nd.getVaiTro() sẽ chạy đúng phiên bản của lớp con.
+ * Tìm kiếm: theo mã, theo tên, theo vai trò, theo email.
+ */
+public class DanhSachNguoiDung extends DanhSach<NguoiDung> {
 
-    @Override
-    public void them(NguoiDung obj) {
-        danhSach.add(obj);
-        System.out.println("Them nguoi dung thanh cong!");
+    public static final String TEN_FILE = "nguoidung.txt";
+
+    public DanhSachNguoiDung() {
+        super(THU_MUC_MAC_DINH + "/" + TEN_FILE);
+    }
+
+    public DanhSachNguoiDung(String duongDanFile) {
+        super(duongDanFile);
     }
 
     @Override
-    public void sua(String ma) {
-        NguoiDung nd = timTheoMa(ma);
-        if (nd == null) {
-            System.out.println("Khong tim thay nguoi dung co ma: " + ma);
-            return;
+    protected String layMa(NguoiDung doiTuong) {
+        return doiTuong.getMa();
+    }
+
+    /** Dựa vào ký hiệu loại đầu dòng để tạo đúng lớp con. */
+    @Override
+    protected NguoiDung phanTichDong(String dong) {
+        String[] t = tachTruong(dong, 6);
+        String loai = t[0].toUpperCase();
+        String ma = t[1].toUpperCase();
+        if (!NhapLieu.kiemTraEmail(t[4])) {
+            throw new IllegalArgumentException("email không hợp lệ");
         }
-        System.out.println("Dang sua thong tin cho: " + nd.getHoTen());
-        nd.setHoTen(NhapLieu.nhapString("Nhap ho ten moi: "));
-        nd.setEmail(NhapLieu.nhapEmail("Nhap email moi: "));
-        nd.setSoDienThoai(NhapLieu.nhapString("Nhap so dien thoai moi: "));
-        if (nd instanceof ThiSinh) {
-            ((ThiSinh) nd).setLop(NhapLieu.nhapString("Nhap lop moi: "));
-        } else if (nd instanceof GiaoVien) {
-            ((GiaoVien) nd).setBoMon(NhapLieu.nhapString("Nhap bo mon moi: "));
+        if (loai.equals(ThiSinh.KY_HIEU_LOAI)) {
+            return new ThiSinh(ma, t[2], NhapLieu.docNgay(t[3]), t[4], t[5]);
         }
-        System.out.println("Cap nhat thong tin thanh cong!");
+        if (loai.equals(GiaoVien.KY_HIEU_LOAI)) {
+            return new GiaoVien(ma, t[2], NhapLieu.docNgay(t[3]), t[4], t[5]);
+        }
+        throw new IllegalArgumentException("loại người dùng không hợp lệ: " + t[0]);
     }
 
     @Override
-    public void xoa(String ma) {
-        NguoiDung nd = timTheoMa(ma);
-        if (nd == null) {
-            System.out.println("Khong tim thay nguoi dung co ma: " + ma);
-            return;
-        }
-        danhSach.remove(nd);
-        System.out.println("Xoa nguoi dung thanh cong!");
+    protected String chuyenThanhDong(NguoiDung doiTuong) {
+        return doiTuong.toFileString(); // ĐA HÌNH
     }
 
     @Override
-    public NguoiDung timTheoMa(String ma) {
-        for (NguoiDung nd : danhSach) {
-            if (nd.getMaNguoiDung().equalsIgnoreCase(ma)) {
-                return nd;
-            }
-        }
-        return null;
+    protected void hienThiPhanTu(NguoiDung doiTuong) {
+        doiTuong.hienThi(); // ĐA HÌNH
     }
 
     @Override
-    public void hienThi() {
-        if (danhSach.isEmpty()) {
-            System.out.println("Danh sach nguoi dung dang trong!");
-            return;
-        }
-        for (NguoiDung nd : danhSach) {
-            nd.hienThiThongTin();
-        }
+    protected void inTieuDe() {
+        NguoiDung.inTieuDe();
     }
 
-    // Các hàm tìm kiếm chuyên biệt theo yêu cầu phân công
-    public List<NguoiDung> timTheoTen(String ten) {
+    public List<NguoiDung> timTheoTen(String tuKhoa) {
         List<NguoiDung> ketQua = new ArrayList<>();
         for (NguoiDung nd : danhSach) {
-            if (nd.getHoTen().toLowerCase().contains(ten.toLowerCase())) {
+            if (NhapLieu.chuaTuKhoa(nd.getHoTen(), tuKhoa)) {
                 ketQua.add(nd);
             }
         }
         return ketQua;
     }
 
+    /** Tìm theo vai trò: gọi getVaiTro() ĐA HÌNH. */
     public List<NguoiDung> timTheoVaiTro(String vaiTro) {
         List<NguoiDung> ketQua = new ArrayList<>();
         for (NguoiDung nd : danhSach) {
-            if (vaiTro.equalsIgnoreCase("thisinh") && nd instanceof ThiSinh) {
-                ketQua.add(nd);
-            } else if (vaiTro.equalsIgnoreCase("giaovien") && nd instanceof GiaoVien) {
+            if (nd.getVaiTro().equalsIgnoreCase(vaiTro)) {
                 ketQua.add(nd);
             }
         }
         return ketQua;
     }
 
-    public NguoiDung timTheoEmail(String email) {
+    public List<NguoiDung> timTheoEmail(String tuKhoa) {
+        List<NguoiDung> ketQua = new ArrayList<>();
         for (NguoiDung nd : danhSach) {
-            if (nd.getEmail().equalsIgnoreCase(email)) {
-                return nd;
+            if (nd.getEmail().toLowerCase().contains(tuKhoa.toLowerCase().trim())) {
+                ketQua.add(nd);
             }
         }
-        return null;
+        return ketQua;
     }
 
-    @Override
-    public void docFile(String tenFile) {
-        File file = new File(tenFile);
-        if (!file.exists()) {
-            System.out.println("File " + tenFile + " chua ton tai.");
-            return;
-        }
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            int dong = 0;
-            while ((line = br.readLine()) != null) {
-                dong++;
-                if (line.trim().isEmpty()) continue;
-                String[] parts = line.split(",");
-                if (parts.length < 6) {
-                    System.out.println("Loi dong hong tai dong " + dong);
-                    continue;
-                }
-                String loai = parts[0].trim();
-                String ma = parts[1].trim();
-                String hoTen = parts[2].trim();
-                String email = parts[3].trim();
-                String sdt = parts[4].trim();
-                String thuocTinhRieng = parts[5].trim();
-
-                if (loai.equalsIgnoreCase("TS")) {
-                    danhSach.add(new ThiSinh(ma, hoTen, email, sdt, thuocTinhRieng));
-                } else if (loai.equalsIgnoreCase("GV")) {
-                    danhSach.add(new GiaoVien(ma, hoTen, email, sdt, thuocTinhRieng));
-                }
+    /** Lấy riêng các thí sinh (dùng cho buổi thi). */
+    public List<ThiSinh> layDanhSachThiSinh() {
+        List<ThiSinh> ketQua = new ArrayList<>();
+        for (NguoiDung nd : danhSach) {
+            if (nd instanceof ThiSinh) {
+                ketQua.add((ThiSinh) nd);
             }
-            System.out.println("Doc file nguoi dung thanh cong!");
-        } catch (IOException e) {
-            System.out.println("Loi doc file: " + e.getMessage());
         }
-    }
-
-    @Override
-    public void ghiFile(String tenFile) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (NguoiDung nd : danhSach) {
-                bw.write(nd.toString());
-                bw.newLine();
-            }
-            System.out.println("Ghi file nguoi dung thanh cong!");
-        } catch (IOException e) {
-            System.out.println("Loi ghi file: " + e.getMessage());
-        }
+        return ketQua;
     }
 }

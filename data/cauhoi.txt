@@ -1,0 +1,80 @@
+MOT|CH001|Từ khóa nào dùng để kế thừa một lớp trong Java?|MH001|1|B|implements|extends|inherits|super
+MOT|CH002|Phạm vi truy cập nào chỉ cho phép truy cập bên trong chính lớp đó?|MH001|1|C|public|protected|private|default
+MOT|CH003|Lớp nào là lớp cha của mọi lớp trong Java?|MH001|2|A|Object|Class|System|Main
+NHIEU|CH004|Những phát biểu nào đúng về lớp trừu tượng (abstract class)?|MH001|2|AC|Có thể chứa phương thức trừu tượng|Có thể tạo đối tượng trực tiếp bằng new|Có thể có constructor|Phải khai báo bằng từ khóa interface
+NHIEU|CH005|Những kỹ thuật nào thể hiện tính đa hình trong Java?|MH001|3|AB|Ghi đè phương thức (override)|Nạp chồng phương thức (overload)|Khai báo biến static|Khai báo hằng final
+DUNGSAI|CH006|Một lớp trong Java có thể implement nhiều interface cùng lúc.|MH001|1|D
+DUNGSAI|CH007|Phương thức static có thể truy cập trực tiếp thuộc tính không static của lớp.|MH001|2|S
+MOT|CH008|Câu lệnh SQL nào dùng để truy vấn dữ liệu?|MH002|1|C|INSERT|UPDATE|SELECT|DELETE
+MOT|CH009|Khóa chính (primary key) có đặc điểm nào?|MH002|2|B|Cho phép giá trị trùng lặp|Duy nhất và không được rỗng|Luôn là kiểu số|Chỉ xuất hiện trong bảng con
+NHIEU|CH010|Những lệnh nào thuộc nhóm thao tác dữ liệu (DML)?|MH002|2|AC|INSERT|CREATE|UPDATE|DROP
+DUNGSAI|CH011|Một bảng có thể có nhiều khóa ngoại.|MH002|1|D
+MOT|CH012|Dạng chuẩn 1 (1NF) yêu cầu điều gì?|MH002|3|A|Mọi thuộc tính đều là nguyên tố|Không có phụ thuộc bắc cầu|Không có phụ thuộc bộ phận|Cơ sở dữ liệu có ít nhất hai bảng
+MOT|CH013|Giao thức HTTP mặc định dùng cổng nào?|MH003|1|C|21|25|80|443
+NHIEU|CH014|Những giao thức nào hoạt động ở tầng giao vận (Transport)?|MH003|2|AC|TCP|IP|UDP|HTTP
+DUNGSAI|CH015|Địa chỉ IPv4 có độ dài 32 bit.|MH003|1|D
+MOT|CH016|Từ khóa nào dùng để gọi constructor của lớp cha?|MH001|1|C|this|extends|super|parent
+NHIEU|CH017|Những thành phần nào có thể khai báo trong interface Java (từ Java 8)?|MH001|3|ABC|Phương thức default|Phương thức static|Hằng số|Constructor
+DUNGSAI|CH018|Java cho phép một lớp extends nhiều lớp cùng lúc.|MH001|1|S
+MOT|CH019|Mệnh đề nào dùng để lọc các nhóm sau GROUP BY?|MH002|2|B|WHERE|HAVING|ORDER BY|LIMIT
+MOT|CH020|Phép JOIN nào giữ lại mọi dòng của bảng bên trái kể cả khi không khớp?|MH002|2|C|INNER JOIN|CROSS JOIN|LEFT JOIN|SELF JOIN
+NHIEU|CH021|Những hàm nào là hàm gộp (aggregate) trong SQL?|MH002|1|ABD|COUNT|SUM|UPPER|AVG
+DUNGSAI|CH022|Lệnh TRUNCATE TABLE xóa luôn cấu trúc của bảng.|MH002|2|S
+MOT|CH023|Tính chất nào của giao dịch đảm bảo "hoặc thực hiện tất cả, hoặc không gì cả"?|MH002|3|A|Atomicity|Consistency|Isolation|Durability
+MOT|CH024|Mô hình OSI có bao nhiêu tầng?|MH003|1|C|5|6|7|4
+MOT|CH025|Giao thức nào dùng để phân giải tên miền thành địa chỉ IP?|MH003|1|B|DHCP|DNS|ARP|FTP
+MOT|CH026|Subnet mask /24 tương ứng với giá trị nào?|MH003|2|A|255.255.255.0|255.255.0.0|255.255.255.128|255.0.0.0
+NHIEU|CH027|Những thiết bị nào hoạt động chủ yếu ở tầng liên kết dữ liệu (tầng 2)?|MH003|2|BC|Router|Switch|Bridge|Hub
+DUNGSAI|CH028|Giao thức UDP đảm bảo các gói tin đến đúng thứ tự.|MH003|1|S
+MOT|CH029|Giao thức ARP dùng để làm gì?|MH003|3|D|Cấp phát địa chỉ IP động|Định tuyến gói tin|Mã hóa dữ liệu|Tìm địa chỉ MAC từ địa chỉ IP
+DUNGSAI|CH030|Địa chỉ 192.168.1.1 thuộc dải địa chỉ IP riêng (private).|MH003|2|D
+MOT|CH031|Cấu trúc dữ liệu nào hoạt động theo nguyên tắc LIFO?|MH004|1|B|Hàng đợi (Queue)|Ngăn xếp (Stack)|Danh sách liên kết|Cây nhị phân
+MOT|CH032|Độ phức tạp của tìm kiếm nhị phân trên mảng đã sắp xếp là?|MH004|2|C|O(n)|O(n log n)|O(log n)|O(1)
+MOT|CH033|Thuật toán sắp xếp nào luôn có độ phức tạp O(n log n)?|MH004|2|D|Bubble sort|Selection sort|Insertion sort|Merge sort
+NHIEU|CH034|Những thuật toán nào dùng để duyệt đồ thị?|MH004|2|AB|BFS|DFS|Quick sort|Binary search
+DUNGSAI|CH035|Hàng đợi (Queue) hoạt động theo nguyên tắc FIFO.|MH004|1|D
+MOT|CH036|Duyệt cây nhị phân tìm kiếm theo thứ tự nào cho dãy khóa tăng dần?|MH004|3|B|Tiền thứ tự (preorder)|Trung thứ tự (inorder)|Hậu thứ tự (postorder)|Theo mức (level order)
+DUNGSAI|CH037|Quick sort có độ phức tạp O(n log n) trong mọi trường hợp.|MH004|3|S
+MOT|CH038|Cấu trúc nào truy cập phần tử theo chỉ số trong thời gian O(1)?|MH004|1|A|Mảng|Danh sách liên kết đơn|Ngăn xếp|Cây AVL
+NHIEU|CH039|Những cấu trúc dữ liệu nào là phi tuyến tính?|MH004|2|CD|Mảng|Ngăn xếp|Cây|Đồ thị
+MOT|CH040|Thuật toán Dijkstra dùng để giải bài toán nào?|MH004|3|C|Cây khung nhỏ nhất|Sắp xếp topo|Đường đi ngắn nhất từ một đỉnh|Tô màu đồ thị
+MOT|CH041|Thành phần nào của hệ điều hành phân phối CPU cho các tiến trình?|MH005|2|A|Bộ lập lịch (scheduler)|Trình biên dịch|Hệ thống tập tin|Trình điều khiển thiết bị
+MOT|CH042|Điều kiện nào KHÔNG thuộc 4 điều kiện cần để xảy ra bế tắc (deadlock)?|MH005|3|D|Loại trừ tương hỗ|Giữ và chờ|Không thu hồi tài nguyên|Ưu tiên tiến trình
+NHIEU|CH043|Những thuật toán nào là thuật toán lập lịch CPU?|MH005|2|ABD|FCFS|Round Robin|LRU|SJF
+DUNGSAI|CH044|Các luồng (thread) trong cùng một tiến trình dùng chung không gian bộ nhớ.|MH005|2|D
+MOT|CH045|Kỹ thuật nào cho phép chạy chương trình lớn hơn bộ nhớ vật lý?|MH005|2|B|Phân mảnh|Bộ nhớ ảo|Bộ nhớ đệm cache|Ngắt
+MOT|CH046|Lệnh nào trong Linux dùng để liệt kê các tệp trong thư mục?|MH005|1|C|cd|pwd|ls|mkdir
+DUNGSAI|CH047|Linux là hệ điều hành mã nguồn mở.|MH005|1|D
+MOT|CH048|Thuật toán thay trang nào thay trang lâu nhất chưa được sử dụng?|MH005|3|B|FIFO|LRU|OPT|Round Robin
+NHIEU|CH049|Những trạng thái nào là trạng thái của tiến trình?|MH005|1|ABC|Sẵn sàng (ready)|Đang chạy (running)|Chờ (waiting)|Biên dịch (compiling)
+DUNGSAI|CH050|Semaphore chỉ dùng được để đồng bộ đúng hai tiến trình.|MH005|2|S
+MOT|CH051|Thẻ HTML nào dùng để tạo liên kết?|MH006|1|A|<a>|<link>|<href>|<url>
+MOT|CH052|Thuộc tính CSS nào dùng để đổi màu chữ?|MH006|1|B|background-color|color|font-color|text-color
+MOT|CH053|Mã trạng thái HTTP 404 có nghĩa là gì?|MH006|1|C|Lỗi máy chủ|Chuyển hướng|Không tìm thấy tài nguyên|Thành công
+NHIEU|CH054|Những phương thức HTTP nào thường dùng trong REST API?|MH006|2|ABD|GET|POST|SEND|DELETE
+DUNGSAI|CH055|JavaScript chỉ chạy được trên trình duyệt web.|MH006|2|S
+MOT|CH056|Từ khóa nào khai báo biến không thể gán lại trong JavaScript?|MH006|2|C|var|let|const|static
+MOT|CH057|Định dạng dữ liệu nào phổ biến nhất khi trao đổi qua REST API?|MH006|1|B|CSV|JSON|DOCX|BMP
+NHIEU|CH058|Những giá trị nào hợp lệ cho thuộc tính CSS display?|MH006|2|ABC|flex|grid|none|bold
+DUNGSAI|CH059|Cookie được lưu ở phía trình duyệt của người dùng.|MH006|1|D
+MOT|CH060|Tấn công XSS khai thác lỗ hổng nào?|MH006|3|A|Chèn mã script độc vào trang web|Đoán mật khẩu|Làm tràn bộ đệm máy chủ|Nghe lén mạng Wi-Fi
+MOT|CH061|Tập hợp có 4 phần tử có bao nhiêu tập con?|MH007|1|D|4|8|12|16
+MOT|CH062|Mệnh đề kéo theo p → q sai khi nào?|MH007|2|B|p sai, q đúng|p đúng, q sai|p sai, q sai|p đúng, q đúng
+MOT|CH063|Có bao nhiêu cách chọn 2 người từ 5 người (không tính thứ tự)?|MH007|2|A|10|20|25|5
+NHIEU|CH064|Những mệnh đề nào là hằng đúng?|MH007|3|AC|p ∨ ¬p|p ∧ ¬p|p → p|p → ¬p
+DUNGSAI|CH065|Đồ thị đầy đủ K5 có 10 cạnh.|MH007|2|D
+MOT|CH066|Giá trị của 7 mod 3 là bao nhiêu?|MH007|1|B|0|1|2|3
+DUNGSAI|CH067|Mọi cây có n đỉnh đều có đúng n cạnh.|MH007|2|S
+MOT|CH068|Số hoán vị của 4 phần tử phân biệt là?|MH007|1|C|4|16|24|12
+NHIEU|CH069|Những số nào là số nguyên tố?|MH007|1|ABD|2|3|9|11
+MOT|CH070|Đồ thị liên thông có chu trình Euler khi và chỉ khi nào?|MH007|3|A|Mọi đỉnh có bậc chẵn|Có đúng hai đỉnh bậc lẻ|Mọi đỉnh có bậc lẻ|Số cạnh bằng số đỉnh
+MOT|CH071|Mô hình phát triển phần mềm nào thực hiện tuần tự từng giai đoạn?|MH008|1|A|Thác nước (Waterfall)|Scrum|Xoắn ốc (Spiral)|Kanban
+MOT|CH072|Trong Scrum, một chu kỳ phát triển ngắn được gọi là gì?|MH008|1|C|Milestone|Release|Sprint|Phase
+NHIEU|CH073|Những biểu đồ nào thuộc ngôn ngữ UML?|MH008|2|ABD|Biểu đồ lớp|Biểu đồ ca sử dụng|Biểu đồ Gantt|Biểu đồ tuần tự
+DUNGSAI|CH074|Kiểm thử hộp đen yêu cầu phải biết mã nguồn bên trong chương trình.|MH008|2|S
+MOT|CH075|Git là công cụ dùng để làm gì?|MH008|1|B|Biên dịch mã nguồn|Quản lý phiên bản mã nguồn|Thiết kế giao diện|Quản lý cơ sở dữ liệu
+MOT|CH076|Yêu cầu "hệ thống phản hồi trong vòng 2 giây" thuộc loại yêu cầu nào?|MH008|3|D|Yêu cầu chức năng|Yêu cầu nghiệp vụ|Yêu cầu người dùng|Yêu cầu phi chức năng
+NHIEU|CH077|Những nguyên tắc nào thuộc bộ nguyên tắc SOLID?|MH008|3|AC|Single Responsibility|Don't Repeat Yourself|Open/Closed|Keep It Simple
+DUNGSAI|CH078|Kiểm thử đơn vị (unit test) kiểm tra từng thành phần nhỏ của chương trình một cách độc lập.|MH008|1|D
+MOT|CH079|Vai trò nào trong Scrum chịu trách nhiệm quản lý Product Backlog?|MH008|2|B|Scrum Master|Product Owner|Development Team|Stakeholder
+DUNGSAI|CH080|Mẫu thiết kế Singleton đảm bảo một lớp chỉ có duy nhất một thể hiện.|MH008|2|D

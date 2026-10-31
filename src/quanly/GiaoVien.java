@@ -1,28 +1,65 @@
 package quanly;
 
+import java.time.LocalDate;
+
+/**
+ * KẾ THỪA: GiaoVien là một NguoiDung, có thêm thuộc tính chuyên môn.
+ * Override các phương thức trừu tượng getVaiTro(), hienThi(), toFileString().
+ */
 public class GiaoVien extends NguoiDung {
-    private String boMon;
+
+    public static final String KY_HIEU_LOAI = "GIAOVIEN";
+    public static final String VAI_TRO = "Giáo viên";
+    public static final String TIEN_TO = "GV";
+
+    // THUỘC TÍNH STATIC: bộ đếm sinh mã giáo viên
+    private static int boDem = 0;
+
+    private String chuyenMon;
 
     public GiaoVien() {
         super();
+        this.chuyenMon = "";
     }
 
-    public GiaoVien(String maNguoiDung, String hoTen, String email, String soDienThoai, String boMon) {
-        super(maNguoiDung, hoTen, email, soDienThoai);
-        this.boMon = boMon;
+    public GiaoVien(String ma, String hoTen, LocalDate ngaySinh, String email, String chuyenMon) {
+        super(ma, hoTen, ngaySinh, email); // gọi constructor lớp cha
+        this.chuyenMon = chuyenMon;
+        capNhatBoDem(ma);
     }
 
-    public String getBoMon() { return boMon; }
-    public void setBoMon(String boMon) { this.boMon = boMon; }
+    // PHƯƠNG THỨC STATIC: sinh mã kế tiếp, ví dụ GV003
+    public static String sinhMa() {
+        return NhapLieu.taoMa(TIEN_TO, boDem + 1);
+    }
+
+    public static void capNhatBoDem(String ma) {
+        int so = NhapLieu.maThanhSo(ma, TIEN_TO);
+        if (so > boDem) {
+            boDem = so;
+        }
+    }
+
+    public String getChuyenMon() {
+        return chuyenMon;
+    }
+
+    public void setChuyenMon(String chuyenMon) {
+        this.chuyenMon = chuyenMon;
+    }
+
+    @Override // ĐA HÌNH: override phương thức trừu tượng
+    public String getVaiTro() {
+        return VAI_TRO;
+    }
 
     @Override
-    public void hienThiThongTin() {
-        System.out.println("[Giao Vien] Ma: " + maNguoiDung + " | Ho ten: " + hoTen + 
-                           " | Email: " + email + " | SĐT: " + soDienThoai + " | Bo mon: " + boMon);
+    public void hienThi() {
+        inDong("Chuyên môn: " + chuyenMon);
     }
 
     @Override
-    public String toString() {
-        return "GV," + maNguoiDung + "," + hoTen + "," + email + "," + soDienThoai + "," + boMon;
+    public String toFileString() {
+        return KY_HIEU_LOAI + "|" + thongTinChungFile() + "|" + chuyenMon;
     }
 }
